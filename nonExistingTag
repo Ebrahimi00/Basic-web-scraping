@@ -1,0 +1,32 @@
+from urllib.request import urlopen
+from urllib.error import HTTPError, URLError
+from bs4 import BeautifulSoup 
+
+try:
+    html = urlopen('https://www.bishtarazyek.com/%D8%AA%D9%85%D8%B1%DB%8C%D9%86%D8%A7%D8%AA-%D9%81%D9%86-%D8%A8%DB%8C%D8%A7%D9%86/')
+    bs = BeautifulSoup(html.read(), 'html.parser')
+
+    # استخراج تمام تگ‌های <i>
+    all_i_tags = bs.find_all('i')
+
+    # انتخاب پنج تگ <i> آخر
+    last_five_i_tags = all_i_tags[-5:]
+
+    # چاپ پنج تگ <i> آخر
+    for tag in last_five_i_tags:
+        print(tag)
+
+    # تست برای تگ غیر موجود
+    badContent = bs.nonExistingTag.anotherTag 
+
+except HTTPError as e:
+    print(f'خطا در بارگذاری صفحه: {e}')
+except URLError as e:
+    print(f'خطا در برقراری ارتباط با URL: {e}')
+except AttributeError as e:
+    print('Tag was not found')
+else:
+    if badContent is None:     
+        print('Tag was not found')      
+    else:         
+        print(badContent)
