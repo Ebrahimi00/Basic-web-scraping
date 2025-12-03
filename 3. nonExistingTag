@@ -6,23 +6,23 @@ try:
     html = urlopen('https://www.bishtarazyek.com/%D8%AA%D9%85%D8%B1%DB%8C%D9%86%D8%A7%D8%AA-%D9%81%D9%86-%D8%A8%DB%8C%D8%A7%D9%86/')
     bs = BeautifulSoup(html.read(), 'html.parser')
 
-    # استخراج تمام تگ‌های <i>
+    # Extract all <i> tags
     all_i_tags = bs.find_all('i')
 
-    # انتخاب پنج تگ <i> آخر
+    # Select the last five <i> tags
     last_five_i_tags = all_i_tags[-5:]
 
-    # چاپ پنج تگ <i> آخر
+    # Print the last five <i> tags
     for tag in last_five_i_tags:
         print(tag)
 
-    # تست برای تگ غیر موجود
+    # Test for non-existent tag
     badContent = bs.nonExistingTag.anotherTag 
 
 except HTTPError as e:
-    print(f'خطا در بارگذاری صفحه: {e}')
+    print(f'Error loading page: {e}')
 except URLError as e:
-    print(f'خطا در برقراری ارتباط با URL: {e}')
+    print(f'Error communicating with URL: {e}')
 except AttributeError as e:
     print('Tag was not found')
 else:
