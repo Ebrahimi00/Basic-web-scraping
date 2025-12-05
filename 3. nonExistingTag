@@ -32,3 +32,35 @@ else:
         print(badContent)
 # Print tag content
 
+
+
+
+
+
+
+#from urllib.request import urlopen 
+#from bs4 import BeautifulSoup 
+#from urllib.error import HTTPError, URLError
+
+#try:
+    #html = urlopen('https://blog.faradars.org/%D9%81%D8%B1%D9%85%D9%88%D9%84-%D9%87%D8%A7%DB%8C-%D9%85%D8%B4%D8%AA%D9%82/') 
+    #bs = BeautifulSoup(html, 'html.parser') 
+    #for sibling in bs.find('table', {'style':'border-collapse:collapse;width:100%'}).tr.next_siblings:    
+        #print(sibling)
+
+
+    ## Test for non-existent tag
+    #badContent = bs.nonExistingTag.anotherTag 
+
+#except HTTPError as e:
+    #print(f'Error loading page: {e}')
+#except URLError as e:
+    #print(f'Error communicating with URL: {e}')
+#except AttributeError as e:
+    #print('Tag was not found')
+#else:
+    #if badContent is None:     
+        #print('Tag was not found')      
+    #else:         
+        #print(badContent)
+## Print tag content
