@@ -1,0 +1,16 @@
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
+try:
+    # Open the URL
+    html = urlopen('https://www.python.org/')
+    
+    # Parse the HTML
+    bs = BeautifulSoup(html, 'html.parser')
+    
+    # Find all links and print their href attributes
+    for link in bs.find_all('a'):
+        if 'href' in link.attrs:         
+            print(link.attrs['href'])
+except Exception as e:
+    print(f"An error occurred: {e}")
