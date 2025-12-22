@@ -1,0 +1,24 @@
+from urllib.request import urlopen 
+from bs4 import BeautifulSoup 
+import random 
+from time import time
+import re
+
+# تنظیم بذر تصادفی
+random.seed(time())
+
+def getLinks(articleUrl):     
+    html = urlopen(articleUrl)  # مستقیم URL را می‌گیریم
+    bs = BeautifulSoup(html, 'html.parser') 
+    return bs.find_all('a', href=re.compile('^(https?://)'))  # اصلاح regex پوشش لینک‌ها
+
+# دریافت لینک‌های مربوط به مقالات فن بیان
+links = getLinks('https://www.bishtarazyek.com/series/expression-skills/') 
+
+try:
+    while len(links) > 0:
+        newArticle = links[random.randint(0, len(links) - 1)].attrs['href']
+        print(newArticle)     
+        links = getLinks(newArticle)
+except Exception as e:
+    print(f"An error occurred: {e}")
