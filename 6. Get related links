@@ -3,16 +3,17 @@ from bs4 import BeautifulSoup
 import random 
 from time import time
 import re
+#Use https://www.bishtarazyek.com/%D8%AA%D9%85%D8%B1%DB%8C%D9%86%D8%A7%D8%AA-%D9%81%D9%86-%D8%A8%DB%8C%D8%A7%D9%86/#deny
 
-# تنظیم بذر تصادفی
+# Random seed setting
 random.seed(time())
 
 def getLinks(articleUrl):     
-    html = urlopen(articleUrl)  # مستقیم URL را می‌گیریم
+    html = urlopen(articleUrl)     #We get the URL directly.
     bs = BeautifulSoup(html, 'html.parser') 
-    return bs.find_all('a', href=re.compile('^(https?://)'))  # اصلاح regex پوشش لینک‌ها
+    return bs.find_all('a', href=re.compile('^(https?://)'))     #Fix regex covering links
 
-# دریافت لینک‌های مربوط به مقالات فن بیان
+# Get links to articles on rhetorical techniques
 links = getLinks('https://www.bishtarazyek.com/series/expression-skills/') 
 
 try:
