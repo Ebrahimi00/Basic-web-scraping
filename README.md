@@ -11,3 +11,4 @@ Web scraping training from basic to semi-advanced
 7. This code is designed to retrieve and print links from a specified URL related to regular expression skills. It uses web scraping techniques along with error handling to navigate through the many links that are likely to be found on pages.
 
 h1,h2.ipynb :This code is generally designed to extract the title, first paragraph, and edit link information from a web page. It can also go to related pages and gather more information by following internal links recursively.
+netloc.py :This code is for extracting internal links from a web page.
