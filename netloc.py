@@ -2,7 +2,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup 
 from urllib.parse import urlparse
 
-# بارگذاری صفحه وب
+# Loading a web page
 url = urlopen('https://www.bishtarazyek.com/%D8%AA%D9%85%D8%B1%DB%8C%D9%86%D8%A7%D8%AA-%D9%81%D9%86-%D8%A8%DB%8C%D8%A7%D9%86/#deny')   
 bs = BeautifulSoup(url, 'html.parser')
 
@@ -18,16 +18,17 @@ def getInternalLinks(bs, pageUrl):
         parsed = urlparse(link.attrs['href'])                
         
         if parsed.netloc == '':   
-            # لینک نسبی
+            #Relative link
             l = f'{scheme}://{netloc}/{link.attrs["href"].strip("/")}'    
             internalLinks.add(l)            
         elif parsed.netloc == netloc:   
-            # لینک داخلی
+            #  Internal link
             internalLinks.add(link.attrs['href'])         
     
     return list(internalLinks)
 
-# دریافت و چاپ لینک‌های داخلی
+#  Get and print internal links
 links = getInternalLinks(bs, 'https://www.bishtarazyek.com/')
 for link in links:
+
     print(link)
